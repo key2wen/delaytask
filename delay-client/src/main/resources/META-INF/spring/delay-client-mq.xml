@@ -1,0 +1,26 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <!-- Producer: client端通过该生产者，把执行成功的任务消息告知server -->
+    <bean id="notifyServerTaskBizSucProducer" class="com.key.jorigin.mq.rocketmq.RocketMqProducer"
+          init-method="init">
+        <property name="groupId" value="notifyTaskSucGroup"/>
+        <property name="topic" value="DelayTaskClientTopic"/>
+        <property name="namesrvAddr" value="${rocket.mq.namesrvAddr}"/>
+    </bean>
+
+
+    <!-- Consumer 下面是 业务方需要定义的任务到期后的执行逻辑 ，不同的业务一定要定义不同的tag -->
+    <bean id="taskExecBizMessageConsumer" class="com.key.jorigin.mq.rocketmq.RocketMqConsumer" init-method="init">
+        <property name="groupId" value="delayTaskExecQueGroup"/>
+        <property name="topic" value="DelayTaskServerTopic"/>
+        <property name="tag" value="${delay.task.tag}"/>
+        <property name="namesrvAddr" value="${rocket.mq.namesrvAddr}"/>
+        <property name="messageListener" ref="${delay.task.execBizMsgConsumer}"/>
+        <property name="ctype" value="PUSH"/>
+    </bean>
+
+</beans>
+
+

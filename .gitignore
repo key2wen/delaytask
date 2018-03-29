@@ -1,0 +1,29 @@
+
+# Created by .ignore support plugin (hsz.mobi)
+
+
+*.iml
+*/*.iml
+.DS_Store
+
+## Directory-based project format:
+.idea/
+*/.idea/
+.settings/
+
+*/.settings/
+
+target/
+*/target/
+
+*.log
+logs/
+*/logs
+.classpath
+.project
+build.properties
+*.class
+classes/
+# src/main/test/
+# Js complie cache
+node_modules/

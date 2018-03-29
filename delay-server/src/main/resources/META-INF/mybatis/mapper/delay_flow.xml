@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="SwallowFlow">
+
+    <resultMap id="BaseResultMap" type="SwallowFlow">
+        <result column="id"  property="id"/>
+        <result column="biz_type"  property="bizType"/>
+        <result column="seq_id"  property="seqId"/>
+        <result column="task_id"  property="taskId"/>
+        <result column="create_time"  property="createTime"/>
+        <result column="modify_time"  property="modifyTime"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,
+            biz_type,
+            seq_id,
+            task_id,
+            create_time,
+            modify_time
+        </sql>
+
+    <select id="FIND_BY_ID" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+            <include refid="Base_Column_List" />
+        from
+            swallow_flow
+        where
+            id = #{id}
+    </select>
+
+
+    <sql id="_sql_where">
+        <if test="id != null">
+            and id=#{id}
+        </if>
+        <if test="bizType != null and bizType != '' ">
+            and biz_type=#{bizType}
+        </if>
+        <if test="seqId != null and seqId != '' ">
+            and seq_id=#{seqId}
+        </if>
+        <if test="taskId != null">
+            and task_id=#{taskId}
+        </if>
+        <if test="createTime != null">
+            and create_time=#{createTime}
+        </if>
+        <if test="modifyTime != null">
+            and modify_time=#{modifyTime}
+        </if>
+    </sql>
+
+    <insert id="INSERT" parameterType="SwallowFlow" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO swallow_flow (<include refid="Base_Column_List" />)
+        VALUES(
+            #{id},
+                    #{bizType},
+                    #{seqId},
+                    #{taskId},
+                    #{createTime},
+                    #{modifyTime}
+                )
+    </insert>
+
+    <update id="UPDATE_BY_ID" parameterType="SwallowFlow">
+        update
+            swallow_flow
+        <set>
+            <if test="id != null">
+                id=#{id},
+            </if>
+            <if test="bizType != null and bizType != '' ">
+                biz_type=#{bizType},
+            </if>
+            <if test="seqId != null and seqId != '' ">
+                seq_id=#{seqId},
+            </if>
+            <if test="taskId != null">
+                task_id=#{taskId},
+            </if>
+            <if test="createTime != null">
+                create_time=#{createTime},
+            </if>
+            <if test="modifyTime != null">
+                modify_time=#{modifyTime}
+            </if>
+        </set>
+        where
+            id = #{id}
+    </update>
+
+    <sql id="_select_limit">
+        <if test="offset != null and limit != null">
+            limit #{offset} , #{limit}
+        </if>
+    </sql>
+
+    <sql id="_select_orderby">
+        <if test="orderBy != null">
+            ORDER BY ${orderBy.columnName} ${orderBy.type}
+        </if>
+    </sql>
+
+    <select id="QUERY" parameterType="map" resultMap="BaseResultMap">
+        select
+            <include refid="Base_Column_List"/>
+        from
+            swallow_flow
+        <where>
+            <trim prefix="" prefixOverrides="and" suffix="">
+                <include refid="_sql_where"/>
+            </trim>
+        </where>
+        <include refid="_select_orderby" />
+        <include refid="_select_limit" />
+    </select>
+
+    <select id="COUNT" parameterType="map" resultType="int">
+        select
+            count(1)
+        from
+            swallow_flow
+        <where>
+            <trim prefix="" prefixOverrides="and" suffix="">
+                <include refid="_sql_where"/>
+            </trim>
+        </where>
+    </select>
+
+</mapper>

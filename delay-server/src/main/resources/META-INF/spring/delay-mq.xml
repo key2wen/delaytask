@@ -1,0 +1,41 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <!-- 延迟任务到时间执行了 通知消费者执行的Producer
+         业务放需要自定义Consumer进行消费，不同的业务通过tag来区分消费
+    -->
+    <bean id="delayTaskExecQueueProducer" class="com.tongbanjie.mq.client.NotifyManagerBean"
+          init-method="initProducter">
+        <property name="groupId" value="delayTaskExecQueGroup"/>
+        <property name="topic" value="DelayTaskServerTopic"/>
+        <property name="namesrvAddr" value="${rocket.mq.namesrvAddr}"/>
+    </bean>
+
+    <!-- 下面是业务方需要定义的任务到期后的接受执行的 Consumer，不同的业务一定要定义不同的tag -->
+    <!--<bean id="delayTaskExecQueueListener" class="com.wucai.swallow.client.mq.xxxListener"/>-->
+    <!--<bean id="swallowMessageConsumer" class="com.tongbanjie.mq.client.NotifyManagerBean" init-method="init">-->
+    <!--<property name="groupId" value="delayTaskExecQueueGroup"/>-->
+    <!--<property name="topic" value="DelayTaskTopicServer"/>-->
+    <!--<property name="tag" value="xxxTag"/>-->
+    <!--<property name="namesrvAddr" value="${rocket.mq.namesrvAddr}"/>-->
+    <!--<property name="messageListener" ref="delayTaskExecQueueListener"/>-->
+    <!--<property name="ctype" value="PUSH"/>-->
+    <!--</bean>-->
+
+
+    <!-- Consumer: client端发送执行完成的任务 到该消费者，修改server端任务的状态为成功状态 -->
+    <bean id="taskSucNotifyServerMessageListener"
+          class="com.wucai.swallow.biz.center.consumer.TaskSucNotifyServerMessageListener"/>
+    <bean id="swallowClientMessageConsumer" class="com.tongbanjie.mq.client.NotifyManagerBean" init-method="init">
+        <property name="groupId" value="notifyTaskSucGroup"/>
+        <property name="topic" value="DelayTaskClientTopic"/>
+        <property name="tag" value="taskBizSuc"/>
+        <property name="namesrvAddr" value="${rocket.mq.namesrvAddr}"/>
+        <property name="messageListener" ref="taskSucNotifyServerMessageListener"/>
+        <property name="ctype" value="PUSH"/>
+    </bean>
+
+</beans>
+
+

@@ -1,0 +1,38 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd"
+	>
+
+	<context:component-scan base-package="com.wucai.swallow" />
+	
+	<!-- 定义环境变量 -->
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="ignoreResourceNotFound" value="true" />
+		<property name="locations">
+			<list>
+				<value>classpath:config.properties</value>
+				<value>classpath:dubbo.properties</value>
+				<value>classpath:jdbc.properties</value>
+				<value>classpath:jedis.properties</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- dk-swallow-common-dal -->
+	<import resource="classpath:META-INF/spring/delay-db.xml" />
+
+	<!-- dk-swallow-core-service -->
+	<!--<import resource="classpath:META-INF/sprdelay-cache.xml.xml" />-->
+	<import resource="classpath:META-INF/spring/delay-o-cache.xml" />
+
+	<import resource="classpath:META-INF/spring/delay-dubbo.xml" />
+
+	<import resource="classpath:META-INF/spring/delay-mq.xml" />
+
+	<import resource="classpath:META-INF/spring/delay-disconf.xml" />
+
+	<!-- ETag -->
+	<bean id="shallowEtagHeaderFilter" class="org.springframework.web.filter.ShallowEtagHeaderFilter" />
+
+</beans>
