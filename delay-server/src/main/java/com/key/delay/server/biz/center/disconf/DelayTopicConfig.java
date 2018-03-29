@@ -1,6 +1,6 @@
 package com.key.delay.server.biz.center.disconf;
 
-import com.baidu.disconf.client.common.annotations.DisconfFile;
+//import com.baidu.disconf.client.common.annotations.DisconfFile;
 //import com.baidu.disconf.client.common.update.DisconfKVMapUpdateLoader;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
@@ -16,7 +16,7 @@ import java.util.Map;
 
 @Component
 @Scope("singleton")
-@DisconfFile(filename = "delayTopicConfig.properties")
+//@DisconfFile(filename = "delayTopicConfig.properties")
 //public class DelayTopicConfig extends DisconfKVMapUpdateLoader {
 public class DelayTopicConfig  {
 

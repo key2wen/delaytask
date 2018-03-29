@@ -1,6 +1,6 @@
 package com.key.commons.util;
 
-import com.wucai.commons.model.HttpResponseWrapper;
+import com.key.commons.model.HttpResponseWrapper;
 import org.apache.commons.lang.StringUtils;
 import org.apache.http.conn.ConnectTimeoutException;
 

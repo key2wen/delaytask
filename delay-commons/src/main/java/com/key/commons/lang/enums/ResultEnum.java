@@ -1,6 +1,6 @@
 package com.key.commons.lang.enums;
 
-import com.wucai.commons.lang.Result;
+import com.key.commons.lang.Result;
 
 public enum ResultEnum {
 

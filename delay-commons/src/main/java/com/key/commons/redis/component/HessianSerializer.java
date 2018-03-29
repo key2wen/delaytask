@@ -2,7 +2,6 @@ package com.key.commons.redis.component;
 
 import com.caucho.hessian.io.Hessian2Input;
 import com.caucho.hessian.io.Hessian2Output;
-import com.key.commons.redis.component.RedisClusterComponent.Serializer;
 import com.key.commons.lang.type.TypeReference;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

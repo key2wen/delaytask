@@ -334,23 +334,23 @@
 
         <!-- tongbanjie some jar -->
         <!-- disconf -->
-        <dependency>
-            <groupId>com.baidu.disconf</groupId>
-            <artifactId>disconf-client</artifactId>
-            <version>2.6.36</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.baidu.disconf</groupId>-->
+            <!--<artifactId>disconf-client</artifactId>-->
+            <!--<version>2.6.36</version>-->
+        <!--</dependency>-->
 
-        <dependency>
-            <groupId>com.baidu.disconf</groupId>
-            <artifactId>disconf-core</artifactId>
-            <version>2.6.36</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.baidu.disconf</groupId>-->
+            <!--<artifactId>disconf-core</artifactId>-->
+            <!--<version>2.6.36</version>-->
+        <!--</dependency>-->
 
-        <dependency>
-            <groupId>com.baidu.disconf</groupId>
-            <artifactId>disconf-base</artifactId>
-            <version>2.6.36</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.baidu.disconf</groupId>-->
+            <!--<artifactId>disconf-base</artifactId>-->
+            <!--<version>2.6.36</version>-->
+        <!--</dependency>-->
 
 
         <!-- test -->
