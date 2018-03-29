@@ -332,7 +332,7 @@
             <version>1.4.1</version>
         </dependency>
 
-        <!-- tongbanjie some jar -->
+
         <!-- disconf -->
         <!--<dependency>-->
             <!--<groupId>com.baidu.disconf</groupId>-->

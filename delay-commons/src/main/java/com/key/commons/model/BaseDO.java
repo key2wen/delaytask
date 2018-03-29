@@ -7,8 +7,7 @@ import java.util.Map;
  * <p>
  * Description: 该类提供了dao操作时的对象set属性的属性和值的键值对， 用拦截器来监控set的属性值，并进行dao的增加、更新操作 BaseDO.java Create on 2013年8月16日 下午5:28:11
  * </p>
- * 
- * @author <a href=" mailto:zhou.huajun@tongbanjie.com">zhou.huajun</a>
+ *
  * @version 1.0 Copyright (c) 2013 T.b.j,Inc. All Rights Reserved.
  */
 public abstract class BaseDO implements Serializable {

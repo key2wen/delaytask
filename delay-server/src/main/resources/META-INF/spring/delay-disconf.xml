@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
- 
+
 <beans xmlns="http://www.springframework.org/schema/beans"
  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
  xsi:schemaLocation="http://www.springframework.org/schema/beans
  http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
  http://www.springframework.org/schema/aop
  http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
-  
+
 <!-- 如果已在spring-context.xml配置则不需再次重复配置 -->
 <aop:aspectj-autoproxy proxy-target-class="true"/>
  <bean id="disconfMgrBean" class="com.baidu.disconf.client.DisconfMgrBean" destroy-method="destroy">
-<!-- scanPackage 的value必须为 相应的包路径 如果是merchant则为com.tongbanjie.merchant-->
-        <!--<property name="scanPackage" value="com.wucai.account,com.wucai.commons"/>-->
+<!-- scanPackage 的value必须为 相应的包路径 如果是merchant则为com.key.merchant-->
+        <!--<property name="scanPackage" value="com.key.account,com.key.commons"/>-->
      <property name="scanPackage" value="com.key.delay"/>
     </bean>
     <bean id="disconfMgrBean2" class="com.baidu.disconf.client.DisconfMgrBeanSecond"
  init-method="init" destroy-method="destroy">
     </bean>
- 
+
  <bean id="configproperties_no_reloadable_disconf"
  class="com.baidu.disconf.client.addons.properties.ReloadablePropertiesFactoryBean">
         <property name="locations">
@@ -31,7 +31,7 @@
             </list>
         </property>
     </bean>
- 
+
     <bean id="propertyConfigurerForProject1"
  class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="ignoreResourceNotFound" value="true"/>
@@ -42,5 +42,5 @@
             </list>
         </property>
     </bean>
- 
+
 </beans>
