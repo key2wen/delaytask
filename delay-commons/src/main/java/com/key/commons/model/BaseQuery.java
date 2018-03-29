@@ -13,8 +13,7 @@ import java.util.List;
  * 建议只给web端使用，
  * 后端通过调用getPagingParam(int count)来简化参数
  * </p>
- * 
- * @author <a href=" mailto:zhou.huajun@tongbanjie.com">zhou.huajun</a>
+ *
  * @version 1.0 Copyright (c) 2013 T.b.j,Inc. All Rights Reserved.
  */
 public class BaseQuery extends BaseDO implements Serializable {

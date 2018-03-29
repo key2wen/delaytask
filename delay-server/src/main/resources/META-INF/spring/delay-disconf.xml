@@ -12,7 +12,7 @@
  <bean id="disconfMgrBean" class="com.baidu.disconf.client.DisconfMgrBean" destroy-method="destroy">
 <!-- scanPackage 的value必须为 相应的包路径 如果是merchant则为com.tongbanjie.merchant-->
         <!--<property name="scanPackage" value="com.wucai.account,com.wucai.commons"/>-->
-     <property name="scanPackage" value="com.wucai.swallow"/>
+     <property name="scanPackage" value="com.key.delay"/>
     </bean>
     <bean id="disconfMgrBean2" class="com.baidu.disconf.client.DisconfMgrBeanSecond"
  init-method="init" destroy-method="destroy">

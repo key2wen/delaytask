@@ -143,7 +143,6 @@ public abstract class HttpClientUtils {
             header.put("Cookie", "JSESSIONID=538a385d4bf945e4a05ef44b0721fcd1;");
             header.put("MOBILE_DEVICE", "ANDROID_PHONE");
 
-            // trade.tongbanjie.com
             // 192.168.1.109:8101
             String string = post("http://192.168.1.121:8173/status.jsp", header, null, null, "utf-8",
                     10000, 10000);
