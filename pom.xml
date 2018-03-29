@@ -13,6 +13,8 @@
         <module>delay-facade</module>
         <module>delay-server</module>
         <module>delay-commons</module>
+        <module>delay-business</module>
+        <module>delay-test</module>
     </modules>
 
 

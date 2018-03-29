@@ -1,0 +1,11 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+
+    <!-- 下面是业务放需要定义的任务到期后的接受执行的 Consumer，不同的业务一定要定义不同的tag: -->
+    <bean id="delayTaskExecQueueListener" class="com.key.delay.business.component.DelayTaskExecExampleListener"/>
+
+</beans>
+
+

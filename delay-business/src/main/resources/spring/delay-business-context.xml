@@ -1,0 +1,36 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd"
+>
+
+    <context:component-scan base-package="com.key.delay.business.component"/>
+
+    <!-- 定义环境变量 -->
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="ignoreResourceNotFound" value="true"/>
+        <property name="locations">
+            <list>
+                <value>classpath:delaytask.properties</value>
+                <value>classpath:dubbo.properties</value>
+                <value>classpath:log4j.properties</value>
+                <!--<value>classpath:jedis.properties</value>-->
+            </list>
+        </property>
+    </bean>
+
+    <!--<import resource="classpath:META-INF/sprdelay-business-mq.xml.xml"/>-->
+
+    <!-- 下面是业务放需要定义的任务到期后的接受执行的 Consumer，不同的业务一定要定义不同的tag: -->
+    <bean id="delayTaskExecQueueListener" class="com.key.delay.business.component.DelayTaskExecExampleListener"/>
+
+    <import resource="classpath:spring/delay-business-dubbo.xml"/>
+
+    <import resource="classpath:META-INF/spring/dk-swallow-client-context.xml"/>
+
+
+    <!-- ETag -->
+    <bean id="shallowEtagHeaderFilter" class="org.springframework.web.filter.ShallowEtagHeaderFilter"/>
+
+</beans>
